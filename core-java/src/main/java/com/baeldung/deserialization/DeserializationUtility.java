@@ -1,5 +1,6 @@
 package com.baeldung.deserialization;
 
+import io.github.pixee.security.ObjectInputFilters;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -20,6 +21,7 @@ public class DeserializationUtility {
     public static Object deSerializeObjectFromString(String s) throws IOException, ClassNotFoundException {
         byte[] data = Base64.getDecoder().decode(s);
         ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(data));
+        ObjectInputFilters.enableObjectFilterIfUnprotected(ois);
         Object o = ois.readObject();
         ois.close();
         return o;
