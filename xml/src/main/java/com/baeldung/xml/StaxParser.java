@@ -1,5 +1,6 @@
 package com.baeldung.xml;
 
+import static io.github.pixee.security.XMLInputFactorySecurity.hardenFactory;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -34,7 +35,7 @@ public class StaxParser {
         boolean bAuthor = false;
         List<Tutorial> tutorials = new ArrayList<Tutorial>();
         try {
-            XMLInputFactory factory = XMLInputFactory.newInstance();
+            XMLInputFactory factory = hardenFactory(XMLInputFactory.newInstance());
             XMLEventReader eventReader = factory.createXMLEventReader(new FileReader(this.getFile()));
             Tutorial current = null;
             while (eventReader.hasNext()) {
