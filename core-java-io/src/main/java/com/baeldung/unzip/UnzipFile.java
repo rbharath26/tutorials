@@ -1,5 +1,6 @@
 package com.baeldung.unzip;
 
+import io.github.pixee.security.ZipSecurity;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -11,7 +12,7 @@ public class UnzipFile {
     public static void main(final String[] args) throws IOException {
         final String fileZip = "src/main/resources/compressed.zip";
         final byte[] buffer = new byte[1024];
-        final ZipInputStream zis = new ZipInputStream(new FileInputStream(fileZip));
+        final ZipInputStream zis = ZipSecurity.createHardenedInputStream(new FileInputStream(fileZip));
         ZipEntry zipEntry = zis.getNextEntry();
         while (zipEntry != null) {
             final String fileName = zipEntry.getName();
