@@ -1,5 +1,6 @@
 package com.baeldung.system;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.Console;
 import java.io.IOException;
@@ -23,7 +24,7 @@ public class UserCredentials {
     public String readUsername() throws IOException {
         BufferedReader reader =
                 new BufferedReader(new InputStreamReader(System.in));
-        return reader.readLine();
+        return BoundedLineReader.readLine(reader, 5_000_000);
     }
 
     public String readUsernameWithPrompt() {

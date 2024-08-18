@@ -1,5 +1,6 @@
 package com.baeldung.pdf;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -71,7 +72,7 @@ public class PDF2TextExample {
 		
 		BufferedReader br = new BufferedReader(new FileReader(filename));
 		String strLine;
-		while ((strLine = br.readLine()) != null) {
+		while ((strLine = BoundedLineReader.readLine(br, 5_000_000)) != null) {
 			Paragraph para = new Paragraph(strLine + "\n", myfont);
 			para.setAlignment(Element.ALIGN_JUSTIFIED);
 			pdfDoc.add(para);

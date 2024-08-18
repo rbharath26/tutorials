@@ -1,5 +1,6 @@
 package com.baeldung.stringtokenizer;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -33,7 +34,7 @@ public class MyTokenizer {
         String currLine;
         StringTokenizer tokenizer;
         try (BufferedReader br = new BufferedReader(new InputStreamReader(MyTokenizer.class.getResourceAsStream("/" + path)))) {
-            while ((currLine = br.readLine()) != null) {
+            while ((currLine = BoundedLineReader.readLine(br, 5_000_000)) != null) {
                 tokenizer = new StringTokenizer(currLine, delim);
                 while (tokenizer.hasMoreElements()) {
                     tokens.add(tokenizer.nextToken());

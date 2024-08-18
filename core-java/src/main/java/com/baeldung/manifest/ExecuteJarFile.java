@@ -1,5 +1,6 @@
 package com.baeldung.manifest;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -65,7 +66,7 @@ public class ExecuteJarFile {
         StringBuffer output = new StringBuffer();
         BufferedReader outputReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
         String line = "";
-        while ((line = outputReader.readLine()) != null) {
+        while ((line = BoundedLineReader.readLine(outputReader, 5_000_000)) != null) {
             output.append(line + "\n");
         }
         return output.toString();
