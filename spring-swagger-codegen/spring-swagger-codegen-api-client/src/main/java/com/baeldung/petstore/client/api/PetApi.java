@@ -109,7 +109,9 @@ public class PetApi {
         final MultiValueMap<String, Object> formParams = new LinkedMultiValueMap<String, Object>();
         
         if (apiKey != null)
-        headerParams.add("api_key", apiClient.parameterToString(apiKey));
+        {
+            headerParams.add("api_key", apiClient.parameterToString(apiKey));
+        }
 
         final String[] accepts = { 
             "application/xml", "application/json"
