@@ -1,5 +1,6 @@
 package com.baeldung.jets3t;
 
+import io.github.pixee.security.ObjectInputFilters;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -220,6 +221,7 @@ public class JetS3tLiveTest {
 
         // Convert back to ArrayList
         ObjectInputStream objectInputStream = new ObjectInputStream(newStreamObject.getDataInputStream());
+        ObjectInputFilters.enableObjectFilterIfUnprotected(objectInputStream);
         ArrayList<Integer> newNumbers = (ArrayList<Integer>)objectInputStream.readObject();
 
         assertEquals(2, (int)newNumbers.get(0));

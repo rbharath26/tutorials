@@ -1,5 +1,6 @@
 package com.baeldung.serialization;
 
+import io.github.pixee.security.ObjectInputFilters;
 import org.junit.Test;
 
 import java.io.FileInputStream;
@@ -26,6 +27,7 @@ public class PersonUnitTest {
 
         FileInputStream fileInputStream = new FileInputStream("yofile.txt");
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+        ObjectInputFilters.enableObjectFilterIfUnprotected(objectInputStream);
         Person p2 = (Person) objectInputStream.readObject();
         objectInputStream.close();
 
@@ -54,6 +56,7 @@ public class PersonUnitTest {
 
         FileInputStream fileInputStream = new FileInputStream("yofile2.txt");
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+        ObjectInputFilters.enableObjectFilterIfUnprotected(objectInputStream);
         Employee e2 = (Employee) objectInputStream.readObject();
         objectInputStream.close();
 

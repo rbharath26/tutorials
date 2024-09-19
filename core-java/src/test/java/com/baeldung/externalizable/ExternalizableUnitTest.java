@@ -1,5 +1,6 @@
 package com.baeldung.externalizable;
 
+import io.github.pixee.security.ObjectInputFilters;
 import org.junit.Test;
 
 import java.io.*;
@@ -28,6 +29,7 @@ public class ExternalizableUnitTest {
 
         FileInputStream fileInputStream = new FileInputStream(OUTPUT_FILE);
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+        ObjectInputFilters.enableObjectFilterIfUnprotected(objectInputStream);
 
         Country c2 = new Country();
         c2.readExternal(objectInputStream);
@@ -59,6 +61,7 @@ public class ExternalizableUnitTest {
 
         FileInputStream fileInputStream = new FileInputStream(OUTPUT_FILE);
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+        ObjectInputFilters.enableObjectFilterIfUnprotected(objectInputStream);
 
         Region r2 = new Region();
         r2.readExternal(objectInputStream);
