@@ -2,6 +2,7 @@ package com.baeldung.scribejava.controller;
 
 import com.baeldung.scribejava.service.TwitterService;
 import com.github.scribejava.core.model.*;
+import io.github.pixee.security.SystemCommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,7 +28,7 @@ public class TwitterController {
 
             Runtime runtime = Runtime.getRuntime();
             try {
-                runtime.exec("rundll32 url.dll,FileProtocolHandler " + auth);
+                SystemCommand.runCommand(runtime, "rundll32 url.dll,FileProtocolHandler " + auth);
             } catch (IOException e) {
                 servletResponse.setStatus(HttpServletResponse.SC_BAD_REQUEST);
                 return null;
