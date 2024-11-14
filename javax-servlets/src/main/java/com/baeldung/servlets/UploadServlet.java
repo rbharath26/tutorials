@@ -1,5 +1,6 @@
 package com.baeldung.servlets;
 
+import io.github.pixee.security.Filenames;
 import javax.servlet.annotation.WebServlet;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -46,7 +47,7 @@ public class UploadServlet extends HttpServlet {
                 if (formItems != null && formItems.size() > 0) {
                     for (FileItem item : formItems) {
                         if (!item.isFormField()) {
-                            String fileName = new File(item.getName()).getName();
+                            String fileName = new File(Filenames.toSimpleFileName(item.getName())).getName();
                             String filePath = uploadPath + File.separator + fileName;
                             File storeFile = new File(filePath);
                             item.write(storeFile);
