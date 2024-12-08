@@ -1,5 +1,6 @@
 package com.baeldung.logging.log4j2.tests;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 import org.apache.logging.log4j.LogManager;
@@ -24,7 +25,7 @@ public class LambdaExpressionsIntegrationTest {
     }
 
     private int getRandomNumber() {
-        return (new Random()).nextInt(10);
+        return (new SecureRandom()).nextInt(10);
     }
 
     private String getName() {

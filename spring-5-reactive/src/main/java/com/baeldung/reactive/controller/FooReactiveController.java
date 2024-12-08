@@ -1,5 +1,6 @@
 package com.baeldung.reactive.controller;
 
+import java.security.SecureRandom;
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 
 import java.time.Duration;
@@ -27,7 +28,7 @@ public class FooReactiveController {
 
     @GetMapping(produces = MediaType.TEXT_EVENT_STREAM_VALUE, value = "/foos")
     public Flux<Foo> getAllFoos2() {
-        final Flux<Foo> foosFlux = Flux.fromStream(Stream.generate(() -> new Foo(new Random().nextLong(), randomAlphabetic(6))));
+        final Flux<Foo> foosFlux = Flux.fromStream(Stream.generate(() -> new Foo(new SecureRandom().nextLong(), randomAlphabetic(6))));
         final Flux<Long> emmitFlux = Flux.interval(Duration.ofSeconds(1));
         return Flux.zip(foosFlux, emmitFlux).map(Tuple2::getT1);
     }
@@ -36,7 +37,7 @@ public class FooReactiveController {
     public Flux<Foo> getAllFoos() {
         final Flux<Foo> flux = Flux.<Foo> create(fluxSink -> {
             while (true) {
-                fluxSink.next(new Foo(new Random().nextLong(), randomAlphabetic(6)));
+                fluxSink.next(new Foo(new SecureRandom().nextLong(), randomAlphabetic(6)));
             }
         }).sample(Duration.ofSeconds(1)).log();
 

@@ -1,16 +1,17 @@
 package com.baeldung.algorithms.string.search;
 
 import java.math.BigInteger;
+import java.security.SecureRandom;
 import java.util.Random;
 
 public class StringSearchAlgorithms {
     public static long getBiggerPrime(int m) {
-        BigInteger prime = BigInteger.probablePrime(getNumberOfBits(m) + 1, new Random());
+        BigInteger prime = BigInteger.probablePrime(getNumberOfBits(m) + 1, new SecureRandom());
         return prime.longValue();
     }
 
     public static long getLowerPrime(long number) {
-        BigInteger prime = BigInteger.probablePrime(getNumberOfBits(number) - 1, new Random());
+        BigInteger prime = BigInteger.probablePrime(getNumberOfBits(number) - 1, new SecureRandom());
         return prime.longValue();
     }
 

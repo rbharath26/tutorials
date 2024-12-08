@@ -1,5 +1,6 @@
 package com.baeldung.rest.jbehave;
 
+import java.security.SecureRandom;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
@@ -18,7 +19,7 @@ public class IncreaseSteps {
 
     @Given("the counter has any integral value")
     public void counterHasAnyIntegralValue() {
-        counter = new Random().nextInt();
+        counter = new SecureRandom().nextInt();
         previousValue = counter;
     }
 

@@ -1,5 +1,6 @@
 package com.baeldung.regexp.optmization;
 
+import java.security.SecureRandom;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,7 +25,7 @@ public class OptimizedMatcherUnitTest {
 
     @Before
     public void setup() {
-        Random random = new Random();
+        Random random = new SecureRandom();
         items = new ArrayList<String>();
         long average = 0;
 

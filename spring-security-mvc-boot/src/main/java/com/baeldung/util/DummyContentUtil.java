@@ -1,5 +1,6 @@
 package com.baeldung.util;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -33,7 +34,7 @@ public class DummyContentUtil {
 
     public static final List<Tweet> generateDummyTweets(List<AppUser> users) {
         List<Tweet> tweets = new ArrayList<>();
-        Random random = new Random();
+        Random random = new SecureRandom();
         IntStream.range(0, 9)
             .sequential()
             .forEach(i -> {

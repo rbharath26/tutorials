@@ -1,5 +1,6 @@
 package com.baeldung.maths;
 
+import java.security.SecureRandom;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
@@ -22,7 +23,7 @@ public class BigDecimalDemoUnitTest {
             new char[] { '3', '.', '1', '6', '1', '5' });
         BigDecimal bdlFromInt = new BigDecimal(42);
         BigDecimal bdFromLong = new BigDecimal(123412345678901L);
-        BigInteger bigInteger = BigInteger.probablePrime(100, new Random());
+        BigInteger bigInteger = BigInteger.probablePrime(100, new SecureRandom());
         BigDecimal bdFromBigInteger = new BigDecimal(bigInteger);
 
         assertEquals("0.1", bdFromString.toString());

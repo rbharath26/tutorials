@@ -4,6 +4,7 @@ import com.github.scribejava.apis.GitHubApi;
 import com.github.scribejava.core.builder.ServiceBuilder;
 import com.github.scribejava.core.model.*;
 import com.github.scribejava.core.oauth.OAuth20Service;
+import java.security.SecureRandom;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,7 +30,7 @@ public class GithubController {
 
     @GetMapping(value = "/authorization")
     public RedirectView authorization(HttpServletRequest servletReq) throws InterruptedException, ExecutionException, IOException {
-        String state = String.valueOf(new Random().nextInt(999_999));
+        String state = String.valueOf(new SecureRandom().nextInt(999_999));
         OAuth20Service githubService = createService(state);
         servletReq.getSession().setAttribute("state", state);
 

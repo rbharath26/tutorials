@@ -1,5 +1,6 @@
 package com.baeldung.reactive;
 
+import java.security.SecureRandom;
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 import static org.junit.Assert.assertNotNull;
 
@@ -14,7 +15,7 @@ import reactor.core.publisher.Flux;
 
 public class FluxUnitTest {
 
-    public static final Random RANDOM = new Random();
+    public static final Random RANDOM = new SecureRandom();
 
     @Test
     public void whenFluxIsConstructed_thenCorrect() {

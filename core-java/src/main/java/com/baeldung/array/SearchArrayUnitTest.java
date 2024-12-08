@@ -1,5 +1,6 @@
 package com.baeldung.array;
 
+import java.security.SecureRandom;
 import org.openjdk.jmh.annotations.*;
 
 import java.util.*;
@@ -85,7 +86,7 @@ public class SearchArrayUnitTest {
 
     private static String[] seedArray(int length) {
         String[] strings = new String[length];
-        Random random = new Random();
+        Random random = new SecureRandom();
         for (int i = 0; i < length; i++)
         {
             strings[i] = String.valueOf(random.nextInt());

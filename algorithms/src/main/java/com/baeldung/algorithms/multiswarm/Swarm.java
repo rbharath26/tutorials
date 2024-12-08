@@ -1,5 +1,6 @@
 package com.baeldung.algorithms.multiswarm;
 
+import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -29,7 +30,7 @@ public class Swarm {
 	/**
 	 * A random generator.
 	 */
-	private Random random = new Random();
+	private Random random = new SecureRandom();
 
 	/**
 	 * Instantiates a new Swarm.

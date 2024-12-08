@@ -1,5 +1,6 @@
 package com.baeldung.util;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 public final class IDUtil {
@@ -19,13 +20,13 @@ public final class IDUtil {
     }
 
     public static long randomPositiveLong() {
-        long id = new Random().nextLong() * 10000;
+        long id = new SecureRandom().nextLong() * 10000;
         id = (id < 0) ? (-1 * id) : id;
         return id;
     }
 
     private static long randomNegativeLong() {
-        long id = new Random().nextLong() * 10000;
+        long id = new SecureRandom().nextLong() * 10000;
         id = (id > 0) ? (-1 * id) : id;
         return id;
     }

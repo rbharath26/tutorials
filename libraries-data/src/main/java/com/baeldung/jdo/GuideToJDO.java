@@ -1,5 +1,6 @@
 package com.baeldung.jdo;
 
+import java.security.SecureRandom;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -18,7 +19,7 @@ import org.datanucleus.metadata.PersistenceUnitMetaData;
 public class GuideToJDO {
 
     private static final Logger LOGGER = Logger.getLogger(GuideToJDO.class.getName());
-    private Random rnd = new Random();
+    private Random rnd = new SecureRandom();
     private PersistenceUnitMetaData pumd;
     private PersistenceUnitMetaData pumdXML;
 

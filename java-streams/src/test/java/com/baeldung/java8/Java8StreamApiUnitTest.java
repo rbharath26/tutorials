@@ -1,6 +1,7 @@
 package com.baeldung.java8;
 
 import com.baeldung.stream.Product;
+import java.security.SecureRandom;
 import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -85,7 +86,7 @@ public class Java8StreamApiUnitTest {
 
         IntStream intStream = IntStream.range(1, 3);
         LongStream longStream = LongStream.rangeClosed(1, 3);
-        Random random = new Random();
+        Random random = new SecureRandom();
         DoubleStream doubleStream = random.doubles(3);
         assertEquals(2, intStream.count());
         assertEquals(3, longStream.count());

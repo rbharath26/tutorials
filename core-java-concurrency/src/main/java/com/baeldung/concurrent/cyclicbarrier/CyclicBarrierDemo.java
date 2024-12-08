@@ -1,5 +1,6 @@
 package com.baeldung.concurrent.cyclicbarrier;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -11,7 +12,7 @@ public class CyclicBarrierDemo {
 
     private CyclicBarrier cyclicBarrier;
     private List<List<Integer>> partialResults = Collections.synchronizedList(new ArrayList<>());
-    private Random random = new Random();
+    private Random random = new SecureRandom();
     private int NUM_PARTIAL_RESULTS;
     private int NUM_WORKERS;
 

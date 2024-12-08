@@ -1,5 +1,6 @@
 package com.baeldung.sse.jaxrs;
 
+import java.security.SecureRandom;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.Initialized;
 import javax.enterprise.event.Event;
@@ -38,14 +39,14 @@ public class StockService {
             public void run() {
                 //Simulate Change price and put every x seconds
                 while (true) {
-                    int indx = new Random().nextInt(stockNames.size());
+                    int indx = new SecureRandom().nextInt(stockNames.size());
                     String stockName = stockNames.get(indx);
                     BigDecimal price = getLastPrice(stockName);
                     BigDecimal newprice = changePrice(price);
                     Stock stock = new Stock(counter.incrementAndGet(), stockName, newprice, LocalDateTime.now());
                     stocksDB.add(stock);
 
-                    int r = new Random().nextInt(30);
+                    int r = new SecureRandom().nextInt(30);
                     try {
                         Thread.currentThread().sleep(r*1000);
                     } catch (InterruptedException ex) {
@@ -65,7 +66,7 @@ public class StockService {
     BigDecimal generateOpenPrice() {
         float min = 70;
         float max = 120;
-        return BigDecimal.valueOf(min + new Random().nextFloat() * (max - min)).setScale(4,RoundingMode.CEILING);
+        return BigDecimal.valueOf(min + new SecureRandom().nextFloat() * (max - min)).setScale(4,RoundingMode.CEILING);
     }
 
     BigDecimal changePrice(BigDecimal price) {

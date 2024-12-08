@@ -1,5 +1,6 @@
 package com.baeldung.mocks.jmockit;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 public class AppManager {
@@ -17,7 +18,7 @@ public class AppManager {
     }
 
     private static int randomNumber() {
-        return new Random().nextInt(7);
+        return new SecureRandom().nextInt(7);
     }
 
     private static Integer stringToInteger(String num) {

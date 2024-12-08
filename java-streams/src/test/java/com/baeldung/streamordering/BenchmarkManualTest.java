@@ -1,5 +1,6 @@
 package com.baeldung.streamordering;
 
+import java.security.SecureRandom;
 import org.junit.Test;
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.infra.Blackhole;
@@ -77,7 +78,7 @@ public class BenchmarkManualTest
     @Setup(Level.Trial) public void
     initialize() {
 
-      Random rand = new Random();
+      Random rand = new SecureRandom();
 
       list = new ArrayList<>();
       for (int i = 0; i < 1000; i++)

@@ -1,6 +1,7 @@
 package com.baeldung.protobuf;
 
 
+import java.security.SecureRandom;
 import org.junit.After;
 import org.junit.Test;
 
@@ -25,7 +26,7 @@ public class ProtobufUnitTest {
     public void givenGeneratedProtobufClass_whenCreateClass_thenShouldCreateJavaInstance() {
         //when
         String email = "j@baeldung.com";
-        int id = new Random().nextInt();
+        int id = new SecureRandom().nextInt();
         String name = "Michael Program";
         String number = "01234567890";
         AddressBookProtos.Person person =
@@ -47,7 +48,7 @@ public class ProtobufUnitTest {
     public void givenAddressBookWithOnePerson_whenSaveAsAFile_shouldLoadFromFileToJavaClass() throws IOException {
         //given
         String email = "j@baeldung.com";
-        int id = new Random().nextInt();
+        int id = new SecureRandom().nextInt();
         String name = "Michael Program";
         String number = "01234567890";
         AddressBookProtos.Person person =

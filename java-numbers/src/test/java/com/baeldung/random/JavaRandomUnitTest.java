@@ -1,5 +1,6 @@
 package com.baeldung.random;
 
+import java.security.SecureRandom;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.math3.random.RandomDataGenerator;
 import org.junit.Test;
@@ -17,7 +18,7 @@ public class JavaRandomUnitTest {
 
     @Test
     public void givenUsingPlainJava_whenGeneratingRandomLongUnbounded_thenCorrect() {
-        final long generatedLong = new Random().nextLong();
+        final long generatedLong = new SecureRandom().nextLong();
 
         LOG.debug("{}", generatedLong);
     }
@@ -52,7 +53,7 @@ public class JavaRandomUnitTest {
 
     @Test
     public void givenUsingPlainJava_whenGeneratingRandomIntegerUnbounded_thenCorrect() {
-        final int generatedInteger = new Random().nextInt();
+        final int generatedInteger = new SecureRandom().nextInt();
 
         LOG.debug("{}", generatedInteger);
     }
@@ -61,7 +62,7 @@ public class JavaRandomUnitTest {
     public void givenUsingPlainJava_whenGeneratingRandomIntegerBounded_thenCorrect() {
         final int leftLimit = 1;
         final int rightLimit = 10;
-        final int generatedInteger = leftLimit + (int) (new Random().nextFloat() * (rightLimit - leftLimit));
+        final int generatedInteger = leftLimit + (int) (new SecureRandom().nextFloat() * (rightLimit - leftLimit));
 
         LOG.debug("{}", generatedInteger);
     }
@@ -87,7 +88,7 @@ public class JavaRandomUnitTest {
 
     @Test
     public void givenUsingPlainJava_whenGeneratingRandomFloatUnbouned_thenCorrect() {
-        final float generatedFloat = new Random().nextFloat();
+        final float generatedFloat = new SecureRandom().nextFloat();
 
         LOG.debug("{}", generatedFloat);
     }
@@ -104,7 +105,7 @@ public class JavaRandomUnitTest {
     public void givenUsingPlainJava_whenGeneratingRandomFloatBouned_thenCorrect() {
         final float leftLimit = 1F;
         final float rightLimit = 10F;
-        final float generatedFloat = leftLimit + new Random().nextFloat() * (rightLimit - leftLimit);
+        final float generatedFloat = leftLimit + new SecureRandom().nextFloat() * (rightLimit - leftLimit);
 
         LOG.debug("{}", generatedFloat);
     }
@@ -141,7 +142,7 @@ public class JavaRandomUnitTest {
     public void givenUsingPlainJava_whenGeneratingRandomDoubleBounded_thenCorrect() {
         final double leftLimit = 1D;
         final double rightLimit = 10D;
-        final double generatedDouble = leftLimit + new Random().nextDouble() * (rightLimit - leftLimit);
+        final double generatedDouble = leftLimit + new SecureRandom().nextDouble() * (rightLimit - leftLimit);
 
         LOG.debug("{}", generatedDouble);
     }
@@ -160,7 +161,7 @@ public class JavaRandomUnitTest {
     @Test
     public void givenUsingPlainJava_whenGeneratingRandomStringUnbounded_thenCorrect() {
         final byte[] array = new byte[7]; // length is bounded by 7
-        new Random().nextBytes(array);
+        new SecureRandom().nextBytes(array);
         final String generatedString = new String(array, Charset.forName("UTF-8"));
 
         LOG.debug(generatedString);
@@ -171,7 +172,7 @@ public class JavaRandomUnitTest {
         final int leftLimit = 97; // letter 'a'
         final int rightLimit = 122; // letter 'z'
         final int targetStringLength = 10;
-        final Random random = new Random();
+        final Random random = new SecureRandom();
         final StringBuilder buffer = new StringBuilder(targetStringLength);
 
         for (int i = 0; i < targetStringLength; i++) {

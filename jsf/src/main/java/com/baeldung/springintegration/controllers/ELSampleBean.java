@@ -1,5 +1,6 @@
 package com.baeldung.springintegration.controllers;
 
+import java.security.SecureRandom;
 import javax.annotation.PostConstruct;
 import javax.el.ELContextEvent;
 import javax.el.ELContextListener;
@@ -22,7 +23,7 @@ public class ELSampleBean {
     private String pageDescription = "This page demos JSF EL Basics";
     public static final String constantField = "THIS_IS_NOT_CHANGING_ANYTIME_SOON";
     private int pageCounter;
-    private Random randomIntGen = new Random();
+    private Random randomIntGen = new SecureRandom();
 
     @PostConstruct
     public void init() {

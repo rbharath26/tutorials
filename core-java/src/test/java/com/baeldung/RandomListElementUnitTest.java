@@ -1,6 +1,7 @@
 package com.baeldung;
 
 import com.google.common.collect.Lists;
+import java.security.SecureRandom;
 import org.junit.Test;
 
 import java.util.*;
@@ -11,7 +12,7 @@ public class RandomListElementUnitTest {
     @Test
     public void givenList_whenRandomIndexChosen_shouldReturnARandomElementUsingRandom() {
         List<Integer> givenList = Lists.newArrayList(1, 2, 3);
-        Random rand = new Random();
+        Random rand = new SecureRandom();
 
         givenList.get(rand.nextInt(givenList.size()));
     }
@@ -25,7 +26,7 @@ public class RandomListElementUnitTest {
 
     @Test
     public void givenList_whenNumberElementsChosen_shouldReturnRandomElementsRepeat() {
-        Random rand = new Random();
+        Random rand = new SecureRandom();
         List<String> givenList = Lists.newArrayList("one", "two", "three", "four");
 
         int numberOfElements = 2;
@@ -38,7 +39,7 @@ public class RandomListElementUnitTest {
 
     @Test
     public void givenList_whenNumberElementsChosen_shouldReturnRandomElementsNoRepeat() {
-        Random rand = new Random();
+        Random rand = new SecureRandom();
         List<String> givenList = Lists.newArrayList("one", "two", "three", "four");
 
         int numberOfElements = 2;

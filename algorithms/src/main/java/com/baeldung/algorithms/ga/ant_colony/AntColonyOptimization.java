@@ -1,5 +1,6 @@
 package com.baeldung.algorithms.ga.ant_colony;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -24,7 +25,7 @@ public class AntColonyOptimization {
     private double graph[][];
     private double trails[][];
     private List<Ant> ants = new ArrayList<>();
-    private Random random = new Random();
+    private Random random = new SecureRandom();
     private double probabilities[];
 
     private int currentIndex;

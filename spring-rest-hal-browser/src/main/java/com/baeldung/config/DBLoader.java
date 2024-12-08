@@ -2,6 +2,7 @@ package com.baeldung.config;
 
 import com.baeldung.data.BookRepository;
 import com.baeldung.model.Book;
+import java.security.SecureRandom;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -82,7 +83,7 @@ public class DBLoader implements ApplicationRunner {
        "became a Java REST master!!"
      };
 
-     Random random = new Random();
+     Random random = new SecureRandom();
 
      IntStream.range(0, 100)
        .forEach(i -> {

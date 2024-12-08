@@ -1,5 +1,6 @@
 package com.baeldung.optional;
 
+import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -16,7 +17,7 @@ public class OrElseAndOrElseGet {
 
     public String getRandomName() {
         LOG.info("getRandomName() method - start");
-        Random random = new Random();
+        Random random = new SecureRandom();
         int index = random.nextInt(5);
         LOG.info("getRandomName() method - end");
         return names.get(index);

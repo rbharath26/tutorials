@@ -1,5 +1,6 @@
 package com.baeldung.param;
 
+import java.security.SecureRandom;
 import java.util.Random;
 
 import org.junit.jupiter.api.extension.ExtensionContext;
@@ -39,7 +40,7 @@ public class InvalidPersonParameterResolver implements ParameterResolver {
         /// to be resolved. Otherwise return null.
         if (parameterContext.getParameter()
             .getType() == Person.class) {
-            ret = INVALID_PERSONS[new Random().nextInt(INVALID_PERSONS.length)];
+            ret = INVALID_PERSONS[new SecureRandom().nextInt(INVALID_PERSONS.length)];
         }
         return ret;
     }

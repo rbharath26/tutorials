@@ -1,5 +1,6 @@
 package com.baeldung.maths;
 
+import java.security.SecureRandom;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -120,7 +121,7 @@ public class BigIntegerDemoUnitTest {
 
     @Test
     public void givenBigIntegers_whenPrimeOperations_thenExpectedResult() {
-        BigInteger i = BigInteger.probablePrime(100, new Random());
+        BigInteger i = BigInteger.probablePrime(100, new SecureRandom());
 
         boolean isProbablePrime = i.isProbablePrime(1000);
         assertEquals(true, isProbablePrime);

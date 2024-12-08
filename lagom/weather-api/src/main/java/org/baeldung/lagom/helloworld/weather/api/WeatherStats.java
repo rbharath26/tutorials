@@ -1,5 +1,6 @@
 package org.baeldung.lagom.helloworld.weather.api;
 
+import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -15,7 +16,7 @@ public enum WeatherStats {
 
     private static final int SIZE = VALUES.size();
 
-    private static final Random RANDOM = new Random();
+    private static final Random RANDOM = new SecureRandom();
 
     WeatherStats(String msg) {
         this.message = msg;

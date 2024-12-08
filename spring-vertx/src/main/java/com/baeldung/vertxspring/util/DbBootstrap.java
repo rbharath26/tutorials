@@ -1,5 +1,6 @@
 package com.baeldung.vertxspring.util;
 
+import java.security.SecureRandom;
 import java.util.Random;
 import java.util.UUID;
 import java.util.stream.IntStream;
@@ -21,7 +22,7 @@ public class DbBootstrap implements CommandLineRunner {
     public void run(String... arg0) throws Exception {
 
         IntStream.range(0, 10)
-          .forEach(count -> this.articleRepository.save(new Article(new Random().nextLong(), UUID.randomUUID()
+          .forEach(count -> this.articleRepository.save(new Article(new SecureRandom().nextLong(), UUID.randomUUID()
           .toString())));
 
     }

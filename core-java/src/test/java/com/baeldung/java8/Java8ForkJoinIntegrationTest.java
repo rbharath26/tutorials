@@ -1,5 +1,6 @@
 package com.baeldung.java8;
 
+import java.security.SecureRandom;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -21,7 +22,7 @@ public class Java8ForkJoinIntegrationTest {
 
     @Before
     public void init() {
-        Random random = new Random();
+        Random random = new SecureRandom();
         arr = new int[50];
         for (int i = 0; i < arr.length; i++) {
             arr[i] = random.nextInt(35);

@@ -1,5 +1,6 @@
 package com.baeldung.mqtt;
 
+import java.security.SecureRandom;
 import java.util.Random;
 import java.util.concurrent.Callable;
 
@@ -14,7 +15,7 @@ public class EngineTemperatureSensor implements Callable<Void> {
     public static final String TOPIC = "engine/temperature";
 
     private IMqttClient client;
-    private Random rnd = new Random();
+    private Random rnd = new SecureRandom();
 
     public EngineTemperatureSensor(IMqttClient client) {
         this.client = client;

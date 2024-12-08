@@ -1,5 +1,6 @@
 package com.baeldung.counter;
 
+import java.security.SecureRandom;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -24,7 +25,7 @@ public class CounterStatistics {
     static {
         CounterUtil.COUNTRY_NAMES = new String[10000];
         final String prefix = "NewString"; 
-        Random random = new Random();
+        Random random = new SecureRandom();
         for (int i=0; i<10000; i++) {
             CounterUtil.COUNTRY_NAMES[i] = new String(prefix + random.nextInt(1000));
         }

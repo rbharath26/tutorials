@@ -1,5 +1,6 @@
 package com.baeldung.threadlocalrandom;
 
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -30,7 +31,7 @@ public class ThreadLocalRandomBenchMarker {
 
     @Setup(Level.Iteration)
     public void init() {
-        Random random = new Random();
+        Random random = new SecureRandom();
         randomCallables = new ArrayList<>();
         threadLocalRandomCallables = new ArrayList<>();
         for (int i = 0; i < 1000; i++) {

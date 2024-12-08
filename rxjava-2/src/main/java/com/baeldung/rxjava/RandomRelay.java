@@ -3,13 +3,14 @@ package com.baeldung.rxjava;
 import com.jakewharton.rxrelay2.Relay;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposables;
+import java.security.SecureRandom;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class RandomRelay extends Relay<Integer> {
-    Random random = new Random();
+    Random random = new SecureRandom();
 
     List<Observer<? super Integer>> observers = new ArrayList<>();
 
