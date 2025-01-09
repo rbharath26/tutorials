@@ -1,5 +1,6 @@
 package com.baeldung.http;
 
+import io.github.pixee.security.BoundedLineReader;
 import org.apache.commons.lang.StringUtils;
 import org.junit.Test;
 
@@ -42,7 +43,7 @@ public class HttpRequestLiveTest {
         BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
         String inputLine;
         StringBuilder content = new StringBuilder();
-        while ((inputLine = in.readLine()) != null) {
+        while ((inputLine = BoundedLineReader.readLine(in, 5_000_000)) != null) {
             content.append(inputLine);
         }
         in.close();
@@ -70,7 +71,7 @@ public class HttpRequestLiveTest {
         BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
         String inputLine;
         StringBuilder content = new StringBuilder();
-        while ((inputLine = in.readLine()) != null) {
+        while ((inputLine = BoundedLineReader.readLine(in, 5_000_000)) != null) {
             content.append(inputLine);
         }
         in.close();

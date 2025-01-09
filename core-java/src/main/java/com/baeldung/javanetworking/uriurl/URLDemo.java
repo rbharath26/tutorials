@@ -1,5 +1,6 @@
 package com.baeldung.javanetworking.uriurl;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -56,7 +57,7 @@ public class URLDemo {
         in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
         String current;
 
-        while ((current = in.readLine()) != null) {
+        while ((current = BoundedLineReader.readLine(in, 5_000_000)) != null) {
             urlStringCont += current;
         }
         return urlStringCont;

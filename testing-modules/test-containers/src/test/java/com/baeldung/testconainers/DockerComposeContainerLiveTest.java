@@ -1,5 +1,6 @@
 package com.baeldung.testconainers;
 
+import io.github.pixee.security.BoundedLineReader;
 import static org.junit.Assert.assertEquals;
 
 import java.io.BufferedReader;
@@ -37,7 +38,7 @@ public class DockerComposeContainerLiveTest {
         BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
         String inputLine;
         StringBuffer content = new StringBuffer();
-        while ((inputLine = in.readLine()) != null) {
+        while ((inputLine = BoundedLineReader.readLine(in, 5_000_000)) != null) {
             content.append(inputLine);
         }
         in.close();

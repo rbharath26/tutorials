@@ -1,6 +1,7 @@
 package com.baeldung.opencsv.helpers;
 
 import com.baeldung.opencsv.Constants;
+import io.github.pixee.security.BoundedLineReader;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -62,7 +63,7 @@ public class Helpers {
             BufferedReader br = new BufferedReader(fr);
             String strLine;
             StringBuffer sb = new StringBuffer();
-            while ((strLine = br.readLine()) != null) {
+            while ((strLine = BoundedLineReader.readLine(br, 5_000_000)) != null) {
                 sb.append(strLine);
             }
             response = sb.toString();

@@ -1,5 +1,6 @@
 package org.baeldung.core.exceptions;
 
+import io.github.pixee.security.BoundedLineReader;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,7 +47,7 @@ public class FileNotFoundExceptionUnitTest {
 
     private void readFailingFile() throws IOException {
         BufferedReader rd = new BufferedReader(new FileReader(new File(fileName)));
-        rd.readLine();
+        BoundedLineReader.readLine(rd, 5_000_000);
         // no need to close file
     }
 

@@ -1,5 +1,6 @@
 package com.baeldung.socket;
 
+import io.github.pixee.security.BoundedLineReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -50,7 +51,7 @@ public class EchoMultiServer {
                 out = new PrintWriter(clientSocket.getOutputStream(), true);
                 in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
                 String inputLine;
-                while ((inputLine = in.readLine()) != null) {
+                while ((inputLine = BoundedLineReader.readLine(in, 5_000_000)) != null) {
                     if (".".equals(inputLine)) {
                         out.println("bye");
                         break;

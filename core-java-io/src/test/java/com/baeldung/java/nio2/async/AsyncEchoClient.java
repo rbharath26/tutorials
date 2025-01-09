@@ -1,5 +1,6 @@
 package com.baeldung.java.nio2.async;
 
+import io.github.pixee.security.BoundedLineReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -81,7 +82,7 @@ public class AsyncEchoClient {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String line;
         LOG.debug("Message to server:");
-        while ((line = br.readLine()) != null) {
+        while ((line = BoundedLineReader.readLine(br, 5_000_000)) != null) {
             String response = client.sendMessage(line);
             LOG.debug("response from server: " + response);
             LOG.debug("Message to server:");

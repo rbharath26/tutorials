@@ -1,5 +1,6 @@
 package org.baeldung.java;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;
@@ -118,7 +119,7 @@ public class ApacheFOPHeroldLiveTest {
     private void fixXML(final String input, final String output) throws IOException {
         final BufferedReader reader = new BufferedReader(new FileReader(input));
         final FileWriter writer = new FileWriter(output);
-        String line = reader.readLine();
+        String line = BoundedLineReader.readLine(reader, 5_000_000);
         int count = 0;
         while (line != null) {
             line = line.replaceAll("”", "\"");
@@ -132,7 +133,7 @@ public class ApacheFOPHeroldLiveTest {
             }
             writer.write("\n");
 
-            line = reader.readLine();
+            line = BoundedLineReader.readLine(reader, 5_000_000);
             count++;
         }
         writer.write("</article>");

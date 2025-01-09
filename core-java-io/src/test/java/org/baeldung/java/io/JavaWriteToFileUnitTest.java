@@ -1,5 +1,6 @@
 package org.baeldung.java.io;
 
+import io.github.pixee.security.BoundedLineReader;
 import static org.junit.Assert.assertEquals;
 
 import java.io.BufferedOutputStream;
@@ -146,7 +147,7 @@ public class JavaWriteToFileUnitTest {
         writer.close();
 
         final BufferedReader reader = new BufferedReader(new FileReader(tmpFile));
-        assertEquals(toWrite, reader.readLine());
+        assertEquals(toWrite, BoundedLineReader.readLine(reader, 5_000_000));
         reader.close();
     }
 

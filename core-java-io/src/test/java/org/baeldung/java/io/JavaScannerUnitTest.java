@@ -1,5 +1,6 @@
 package org.baeldung.java.io;
 
+import io.github.pixee.security.BoundedLineReader;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
@@ -48,10 +49,10 @@ public class JavaScannerUnitTest {
         final String secondLine = "Hi, John";
         final BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/test_read_multiple.in"));
 
-        String result = reader.readLine();
+        String result = BoundedLineReader.readLine(reader, 5_000_000);
         assertEquals(firstLine, result);
 
-        result = reader.readLine();
+        result = BoundedLineReader.readLine(reader, 5_000_000);
         assertEquals(secondLine, result);
 
         reader.close();

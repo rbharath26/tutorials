@@ -1,5 +1,6 @@
 package com.baeldung.fileparser;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -14,7 +15,7 @@ public class BufferedReaderExample {
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
 
             while (br.ready()) {
-                result.add(br.readLine());
+                result.add(BoundedLineReader.readLine(br, 5_000_000));
             }
             return result;
         }

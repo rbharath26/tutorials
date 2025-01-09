@@ -1,5 +1,6 @@
 package com.baeldung.console;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -39,7 +40,7 @@ public class ConsoleScannerClass {
         int i = 0;
 
         try {
-            i = Integer.parseInt(buffReader.readLine());
+            i = Integer.parseInt(BoundedLineReader.readLine(buffReader, 5_000_000));
         } catch (NumberFormatException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();

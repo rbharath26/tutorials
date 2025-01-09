@@ -1,5 +1,6 @@
 package org.baeldung.springvault;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.Closeable;
 import java.io.IOException;
@@ -78,7 +79,7 @@ public class VaultInitializer implements Closeable {
         String line = null;
         boolean tokenExtracted = false;
         try {
-            while ((line = reader.readLine()) != null) {
+            while ((line = BoundedLineReader.readLine(reader, 5_000_000)) != null) {
                 builder.append(line);
                 builder.append(System.getProperty("line.separator"));
                 if (line.contains(UNSEAL_KEY)) {

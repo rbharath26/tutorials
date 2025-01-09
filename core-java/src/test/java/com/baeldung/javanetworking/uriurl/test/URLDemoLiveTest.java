@@ -1,5 +1,6 @@
 package com.baeldung.javanetworking.uriurl.test;
 
+import io.github.pixee.security.BoundedLineReader;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -93,7 +94,7 @@ public class URLDemoLiveTest {
 
         String current;
         try {
-            while ((current = in.readLine()) != null) {
+            while ((current = BoundedLineReader.readLine(in, 5_000_000)) != null) {
                 urlContent += current;
             }
         } catch (IOException ex) {

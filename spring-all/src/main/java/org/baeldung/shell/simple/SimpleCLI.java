@@ -1,5 +1,6 @@
 package org.baeldung.shell.simple;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -23,7 +24,7 @@ public class SimpleCLI implements CommandMarker {
         try {
             try (BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()))) {
                 String inputLine;
-                while ((inputLine = in.readLine()) != null) {
+                while ((inputLine = BoundedLineReader.readLine(in, 5_000_000)) != null) {
                     sb.append(inputLine);
                 }
             }

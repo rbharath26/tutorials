@@ -1,5 +1,6 @@
 package org.baeldung.httpclient;
 
+import io.github.pixee.security.BoundedLineReader;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -188,7 +189,7 @@ public class HttpClientMultipartLiveTest {
           .getContent()));
         String body = "";
         StringBuilder content = new StringBuilder();
-        while ((body = rd.readLine()) != null) {
+        while ((body = BoundedLineReader.readLine(rd, 5_000_000)) != null) {
             content.append(body).append("\n");
         }
         return content.toString().trim();

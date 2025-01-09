@@ -1,5 +1,6 @@
 package com.baeldung.finalize;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,7 +15,7 @@ public class Finalizable {
     }
 
     public String readFirstLine() throws IOException {
-        String firstLine = reader.readLine();
+        String firstLine = BoundedLineReader.readLine(reader, 5_000_000);
         return firstLine;
     }
 

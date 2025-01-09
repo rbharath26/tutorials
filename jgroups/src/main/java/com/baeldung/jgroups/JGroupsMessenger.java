@@ -1,5 +1,6 @@
 package com.baeldung.jgroups;
 
+import io.github.pixee.security.BoundedLineReader;
 import org.apache.commons.cli.*;
 import org.jgroups.*;
 import org.jgroups.util.Util;
@@ -127,7 +128,7 @@ public class JGroupsMessenger extends ReceiverAdapter {
                 Address destination = null;
                 System.out.print("Enter a destination: ");
                 System.out.flush();
-                String destinationName = in.readLine().toLowerCase();
+                String destinationName = BoundedLineReader.readLine(in, 5_000_000).toLowerCase();
 
                 if (destinationName.equals("x")) {
                     running = false;
@@ -140,7 +141,7 @@ public class JGroupsMessenger extends ReceiverAdapter {
                 // Accept a string to send
                 System.out.print("Enter a message: ");
                 System.out.flush();
-                String line = in.readLine().toLowerCase();
+                String line = BoundedLineReader.readLine(in, 5_000_000).toLowerCase();
                 sendMessage(destination, line);
             } catch (IOException ioe) {
                 running = false;

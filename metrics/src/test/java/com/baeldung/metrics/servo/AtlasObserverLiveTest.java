@@ -11,6 +11,7 @@ import com.netflix.servo.publish.PollScheduler;
 import com.netflix.servo.publish.atlas.AtlasMetricObserver;
 import com.netflix.servo.publish.atlas.BasicAtlasConfig;
 import com.netflix.servo.tag.BasicTagList;
+import io.github.pixee.security.BoundedLineReader;
 import org.apache.commons.lang.math.RandomUtils;
 import org.apache.http.HttpEntity;
 import org.apache.http.impl.client.HttpClients;
@@ -68,7 +69,7 @@ public class AtlasObserverLiveTest {
             .setUri(atlasUri + "/tags/" + tagname)
             .build())
           .getEntity();
-        return new BufferedReader(new InputStreamReader(entity.getContent())).readLine();
+        return BoundedLineReader.readLine(new BufferedReader(new InputStreamReader(entity.getContent())), 5_000_000);
     }
 
     @Test

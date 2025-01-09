@@ -1,5 +1,6 @@
 package com.baeldung.socket;
 
+import io.github.pixee.security.BoundedLineReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,7 +22,7 @@ public class GreetServer {
             clientSocket = serverSocket.accept();
             out = new PrintWriter(clientSocket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-            String greeting = in.readLine();
+            String greeting = BoundedLineReader.readLine(in, 5_000_000);
             if ("hello server".equals(greeting))
                 out.println("hello client");
             else

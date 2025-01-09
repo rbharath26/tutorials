@@ -1,5 +1,6 @@
 package org.baeldung.java.io;
 
+import io.github.pixee.security.BoundedLineReader;
 import org.junit.Test;
 import org.junit.Ignore;
 import org.slf4j.Logger;
@@ -26,7 +27,7 @@ public class JavaReadFromFileUnitTest {
         final String expected_value = "Hello world";
 
         final BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/test_read.in"));
-        final String currentLine = reader.readLine();
+        final String currentLine = BoundedLineReader.readLine(reader, 5_000_000);
         reader.close();
 
         assertEquals(expected_value, currentLine);
@@ -110,7 +111,7 @@ public class JavaReadFromFileUnitTest {
     public void whenReadUTFEncodedFile_thenCorrect() throws IOException {
         final String expected_value = "青空";
         final BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("src/test/resources/test_read7.in"), "UTF-8"));
-        final String currentLine = reader.readLine();
+        final String currentLine = BoundedLineReader.readLine(reader, 5_000_000);
         reader.close();
         LOG.debug(currentLine);
         
@@ -122,11 +123,11 @@ public class JavaReadFromFileUnitTest {
         final String expected_value = "Hello world \n Test line \n";
         final BufferedReader reader = new BufferedReader(new FileReader("src/test/resources/test_read8.in"));
         final StringBuilder builder = new StringBuilder();
-        String currentLine = reader.readLine();
+        String currentLine = BoundedLineReader.readLine(reader, 5_000_000);
         while (currentLine != null) {
             builder.append(currentLine);
             builder.append("\n");
-            currentLine = reader.readLine();
+            currentLine = BoundedLineReader.readLine(reader, 5_000_000);
         }
 
         reader.close();
@@ -167,7 +168,7 @@ public class JavaReadFromFileUnitTest {
 
         final Path path = Paths.get("src/test/resources/test_read.in");
         final BufferedReader reader = Files.newBufferedReader(path, Charset.defaultCharset());
-        final String line = reader.readLine();
+        final String line = BoundedLineReader.readLine(reader, 5_000_000);
         assertEquals(expected_value, line);
     }
 

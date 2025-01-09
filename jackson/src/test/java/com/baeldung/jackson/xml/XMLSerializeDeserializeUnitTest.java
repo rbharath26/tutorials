@@ -1,5 +1,6 @@
 package com.baeldung.jackson.xml;
 
+import io.github.pixee.security.BoundedLineReader;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -73,7 +74,7 @@ public class XMLSerializeDeserializeUnitTest {
 
         String line;
         br = new BufferedReader(new InputStreamReader(is));
-        while ((line = br.readLine()) != null) {
+        while ((line = BoundedLineReader.readLine(br, 5_000_000)) != null) {
             sb.append(line);
         }
         br.close();

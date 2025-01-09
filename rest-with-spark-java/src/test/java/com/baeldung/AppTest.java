@@ -1,5 +1,6 @@
 package com.baeldung;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -46,7 +47,7 @@ public class AppTest extends TestCase {
 				(conn.getInputStream())));
 		resp = new StringBuffer();
 		
-		while ((output = br.readLine()) != null) {
+		while ((output = BoundedLineReader.readLine(br, 5_000_000)) != null) {
 			resp.append(output);
 		}
 		
@@ -62,7 +63,7 @@ public class AppTest extends TestCase {
 				(conn.getInputStream())));
 		resp = new StringBuffer();
 		
-		while ((output = br.readLine()) != null) {
+		while ((output = BoundedLineReader.readLine(br, 5_000_000)) != null) {
 			resp.append(output);
 		}
 		
@@ -78,7 +79,7 @@ public class AppTest extends TestCase {
 				(conn.getInputStream())));
 		resp = new StringBuffer();
 		
-		while ((output = br.readLine()) != null) {
+		while ((output = BoundedLineReader.readLine(br, 5_000_000)) != null) {
 			resp.append(output);
 		}
 		
@@ -98,7 +99,7 @@ public class AppTest extends TestCase {
 				(conn.getInputStream())));
 		resp = new StringBuffer();
 		
-		while ((output = br.readLine()) != null) {
+		while ((output = BoundedLineReader.readLine(br, 5_000_000)) != null) {
 			resp.append(output);
 		}
 		
@@ -114,7 +115,7 @@ public class AppTest extends TestCase {
 				(conn.getInputStream())));
     	resp = new StringBuffer();
 		
-		while ((output = br.readLine()) != null) {
+		while ((output = BoundedLineReader.readLine(br, 5_000_000)) != null) {
 			resp.append(output);
 		}
 		
@@ -130,7 +131,7 @@ public class AppTest extends TestCase {
 				(conn.getInputStream())));
 		resp = new StringBuffer();
 		
-		while ((output = br.readLine()) != null) {
+		while ((output = BoundedLineReader.readLine(br, 5_000_000)) != null) {
 			resp.append(output);
 		}
 		

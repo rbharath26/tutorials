@@ -1,4 +1,5 @@
 
+import io.github.pixee.security.BoundedLineReader;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -150,7 +151,7 @@ public void testInServer() throws Exception {
         try {
 
             br = new BufferedReader(new InputStreamReader(is));
-            while ((line = br.readLine()) != null) {
+            while ((line = BoundedLineReader.readLine(br, 5_000_000)) != null) {
                 sb.append(line);
             }
 

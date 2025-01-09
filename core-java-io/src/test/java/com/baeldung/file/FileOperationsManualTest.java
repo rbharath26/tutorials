@@ -1,5 +1,6 @@
 package com.baeldung.file;
 
+import io.github.pixee.security.BoundedLineReader;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.hamcrest.CoreMatchers;
@@ -114,7 +115,7 @@ public class FileOperationsManualTest {
         StringBuilder resultStringBuilder = new StringBuilder();
         try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream))) {
             String line;
-            while ((line = bufferedReader.readLine()) != null) {
+            while ((line = BoundedLineReader.readLine(bufferedReader, 5_000_000)) != null) {
                 resultStringBuilder.append(line).append("\n");
             }
         }

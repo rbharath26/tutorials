@@ -1,5 +1,6 @@
 package com.baeldung.socket;
 
+import io.github.pixee.security.BoundedLineReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,7 +29,7 @@ public class EchoClient {
     public String sendMessage(String msg) {
         try {
             out.println(msg);
-            return in.readLine();
+            return BoundedLineReader.readLine(in, 5_000_000);
         } catch (Exception e) {
             return null;
         }

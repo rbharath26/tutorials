@@ -1,5 +1,6 @@
 package com.baeldung.java9.process;
 
+import io.github.pixee.security.BoundedLineReader;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
@@ -23,7 +24,7 @@ class ProcessUnderstandingTest {
         process = Runtime.getRuntime()
             .exec("java -cp  src/main/java com.baeldung.java9.process.OutputStreamExample");
         BufferedReader output = new BufferedReader(new InputStreamReader(process.getInputStream()));
-        int value = Integer.parseInt(output.readLine());
+        int value = Integer.parseInt(BoundedLineReader.readLine(output, 5_000_000));
         assertEquals(3, value);            
     }
 
@@ -34,7 +35,7 @@ class ProcessUnderstandingTest {
         process = Runtime.getRuntime()
             .exec("java -cp  src/main/java com.baeldung.java9.process.OutputStreamExample");
         BufferedReader output = new BufferedReader(new InputStreamReader(process.getInputStream()));
-        int value = Integer.parseInt(output.readLine());
+        int value = Integer.parseInt(BoundedLineReader.readLine(output, 5_000_000));
         assertEquals(3, value);                   
     }
 
@@ -43,7 +44,7 @@ class ProcessUnderstandingTest {
         Process process = Runtime.getRuntime()
             .exec("javac -cp src src\\main\\java\\com\\baeldung\\java9\\process\\ProcessCompilationError.java");
         BufferedReader error = new BufferedReader(new InputStreamReader(process.getErrorStream()));
-        String errorString = error.readLine();
+        String errorString = BoundedLineReader.readLine(error, 5_000_000);
         assertNotNull(errorString);
     }
 

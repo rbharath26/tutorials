@@ -1,5 +1,6 @@
 package com.baeldung.java9.process;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -17,7 +18,7 @@ public class ProcessUnderstanding {
         process = Runtime.getRuntime()
             .exec("java -cp  src/main/java com.baeldung.java9.process.OutputStreamExample");
         BufferedReader output = new BufferedReader(new InputStreamReader(process.getInputStream()));
-        int value = Integer.parseInt(output.readLine());
+        int value = Integer.parseInt(BoundedLineReader.readLine(output, 5_000_000));
         return value;
     }
 
@@ -25,7 +26,7 @@ public class ProcessUnderstanding {
         Process process = Runtime.getRuntime()
             .exec("javac -cp src src\\main\\java\\com\\baeldung\\java9\\process\\ProcessCompilationError.java");
         BufferedReader error = new BufferedReader(new InputStreamReader(process.getErrorStream()));
-        String errorString = error.readLine();
+        String errorString = BoundedLineReader.readLine(error, 5_000_000);
         return errorString;
     }
 
