@@ -1,5 +1,6 @@
 package org.baeldung.java.shell;
 
+import io.github.pixee.security.SystemCommand;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -33,9 +34,9 @@ public class JavaProcessUnitIntegrationTest {
     public void givenProcess_whenCreatingViaRuntime_shouldSucceed() throws Exception {
         Process process;
         if (IS_WINDOWS) {
-            process = Runtime.getRuntime().exec(String.format("cmd.exe /c dir %s", homeDirectory));
+            process = SystemCommand.runCommand(Runtime.getRuntime(), String.format("cmd.exe /c dir %s", homeDirectory));
         } else {
-            process = Runtime.getRuntime().exec(String.format("sh -c ls %s", homeDirectory));
+            process = SystemCommand.runCommand(Runtime.getRuntime(), String.format("sh -c ls %s", homeDirectory));
         }
         StreamGobbler streamGobbler = new StreamGobbler(process.getInputStream(), consumer);
         Executors.newSingleThreadExecutor().submit(streamGobbler);

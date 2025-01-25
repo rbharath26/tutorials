@@ -161,7 +161,11 @@
             <scope>system</scope>
             <systemPath>${java.home}/../lib/tools.jar</systemPath>
         </dependency>
-    </dependencies>
+  <dependency>
+   <groupId>io.github.pixee</groupId>
+   <artifactId>java-security-toolkit</artifactId>
+  </dependency>
+ </dependencies>
 
     <build>
         <finalName>core-java</finalName>
