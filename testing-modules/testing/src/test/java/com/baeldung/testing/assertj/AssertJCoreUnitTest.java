@@ -1,5 +1,6 @@
 package com.baeldung.testing.assertj;
 
+import java.nio.file.Files;
 import org.assertj.core.util.Maps;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -79,7 +80,7 @@ public class AssertJCoreUnitTest {
 
     @Test
     public void whenCheckingFile_then() throws Exception {
-        final File someFile = File.createTempFile("aaa", "bbb");
+        final File someFile = Files.createTempFile("aaa", "bbb").toFile();
         someFile.deleteOnExit();
 
         assertThat(someFile).exists().isFile().canRead().canWrite();

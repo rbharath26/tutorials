@@ -3,6 +3,7 @@ package com.baeldung.jgit.helper;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
 
@@ -18,7 +19,7 @@ public class Helper {
     
      public static Repository createNewRepository() throws IOException {
         // prepare a new folder
-        File localPath = File.createTempFile("TestGitRepository", "");
+        File localPath = Files.createTempFile("TestGitRepository", "").toFile();
         if(!localPath.delete()) {
             throw new IOException("Could not delete temporary file " + localPath);
         }

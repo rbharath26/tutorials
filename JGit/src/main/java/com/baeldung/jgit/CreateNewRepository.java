@@ -2,6 +2,7 @@ package com.baeldung.jgit;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import org.apache.commons.io.FileUtils;
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
@@ -15,7 +16,7 @@ public class CreateNewRepository {
 
     public static void main(String[] args) throws IOException, IllegalStateException, GitAPIException {
         // prepare a new folder
-        File localPath = File.createTempFile("TestGitRepository", "");
+        File localPath = Files.createTempFile("TestGitRepository", "").toFile();
         if(!localPath.delete()) {
             throw new IOException("Could not delete temporary file " + localPath);
         }
