@@ -9,6 +9,7 @@ import com.google.common.collect.Range;
 import com.google.common.collect.Table;
 import com.google.common.collect.TreeRangeMap;
 import com.google.common.io.Files;
+import java.nio.file.Files;
 import org.assertj.guava.data.MapEntry;
 import org.junit.Test;
 
@@ -23,8 +24,8 @@ public class AssertJGuavaUnitTest {
 
     @Test
     public void givenTwoEmptyFiles_whenComparingContent_thenEqual() throws Exception {
-        final File temp1 = File.createTempFile("bael", "dung1");
-        final File temp2 = File.createTempFile("bael", "dung2");
+        final File temp1 = Files.createTempFile("bael", "dung1").toFile();
+        final File temp2 = Files.createTempFile("bael", "dung2").toFile();
 
         assertThat(Files.asByteSource(temp1)).hasSize(0).hasSameContentAs(Files.asByteSource(temp2));
     }

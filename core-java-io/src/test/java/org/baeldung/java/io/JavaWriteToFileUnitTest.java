@@ -140,7 +140,7 @@ public class JavaWriteToFileUnitTest {
     @Test
     public void whenWriteToTmpFile_thenCorrect() throws IOException {
         final String toWrite = "Hello";
-        final File tmpFile = File.createTempFile("test", ".tmp");
+        final File tmpFile = Files.createTempFile("test", ".tmp").toFile();
         final FileWriter writer = new FileWriter(tmpFile);
         writer.write(toWrite);
         writer.close();
